@@ -1,0 +1,42 @@
+# ===== Unity generated folders =====
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# User settings
+UserSettings/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+
+# Rider
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Mono auto-generated files
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.unityproj
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Auto-generated C# project files
+*.csproj
+*.sln
+
+# Unity packages export
+*.unitypackage
