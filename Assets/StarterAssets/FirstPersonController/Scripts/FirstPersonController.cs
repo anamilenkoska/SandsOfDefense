@@ -65,6 +65,9 @@ namespace StarterAssets
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
+		public bool IsCrouching=>_isCrouching;
+		public bool IsSprinting=>_input.sprint;
+
 
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
