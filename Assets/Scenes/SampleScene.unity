@@ -571,6 +571,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &898467073
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.7633705
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31.331755
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359807540711761377, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445542050043496534, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+      propertyPath: m_Name
+      value: EnergyPortal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: -5814230247879327577, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
 --- !u!1001 &1128315534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1286,3 +1355,4 @@ SceneRoots:
   - {fileID: 1641318266}
   - {fileID: 1652677395}
   - {fileID: 1980859544}
+  - {fileID: 898467073}
