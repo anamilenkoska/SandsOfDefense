@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-guid: c9a9ff9ce8e2df348905de9720726536
+guid: b347a3e15b767ec4ea37505f2eb226f9
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PBRGraph
-    second: {fileID: 2100000, guid: ac68e820afe03cd48937e9aa5a70c433, type: 2}
+  externalObjects: {}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -38,32 +33,32 @@ ScriptedImporter:
   _enableGpuInstancing: 0
   _texturesReadWriteEnabled: 1
   _generateMipMaps: 1
-  _useSceneNameIdentifier: 0
+  _useSceneNameIdentifier: 1
   _textureCompression: -50
-  _gltfAsset: '<b>Generator: </b>pygltflib@v1.16.1
+  _gltfAsset: '<b>Generator: </b>UnityGltf 2.18.5, Unity 6000.3.0f1, URP
 
-    <b>Version: </b>2.0
+    <b>Version:
+    </b>2.0
 
     
 
-    <b>Extras:
-    </b>
+    <b>Extras: </b>
 
 '
   optimizeGameObjects: 0
   materials:
-  - {fileID: 4758309174586462558, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+  - {instanceID: 0}
   textures:
-  - {fileID: 6983701643236107813, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
-  hasSceneData: 1
+  - {instanceID: 0}
+  hasSceneData: 0
   hasAnimationData: 0
   hasMaterialData: 1
   hasTextureData: 1
   animations: []
   _extensions: []
   _textures:
-  - texture: {fileID: 6983701643236107813, guid: c9a9ff9ce8e2df348905de9720726536, type: 3}
+  - texture: {instanceID: 0}
     shouldBeLinear: 0
     shouldBeNormalMap: 0
-  _mainAssetIdentifier: main asset
+  _mainAssetIdentifier: 
   _importPlugins: []
