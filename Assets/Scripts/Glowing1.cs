@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Glowing : MonoBehaviour
+public class Glowing1 : MonoBehaviour
 {
-    public Color glowColor=Color.cyan;
+    public Color glowColor=Color.orange;
     public float intensity=8f;
     public float speed=2f;
     private Material _material;
