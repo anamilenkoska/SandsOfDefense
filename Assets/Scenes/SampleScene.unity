@@ -587,28 +587,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120481747}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &136407321 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4787734284849576031, guid: dad9bf9d5da62f14196c25aa61c8fba0, type: 3}
-  m_PrefabInstance: {fileID: 1848740160}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &136407323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136407321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ccaf79c30a9b24488bdfcbe5559855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterShoot
-  projectilePrefab: {fileID: 775342606}
-  shootPoint: {fileID: 74660307}
-  shootForce: 10
-  shootCooldown: 1
-  lastShootTime: 0
 --- !u!1 &140209386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4787734284849576031, guid: 2f75104c3cca189459208df213cc0c6d, type: 3}
@@ -978,9 +956,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4787734284849576031, guid: a4b8779fd5fb2c748b8694737dfbd402, type: 3}
       insertIndex: -1
       addedObject: {fileID: 683060870}
-    - targetCorrespondingSourceObject: {fileID: 4787734284849576031, guid: a4b8779fd5fb2c748b8694737dfbd402, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 683060871}
   m_SourcePrefab: {fileID: 100100000, guid: a4b8779fd5fb2c748b8694737dfbd402, type: 3}
 --- !u!1 &199595786
 GameObject:
@@ -2092,23 +2067,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &683060871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683060868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ccaf79c30a9b24488bdfcbe5559855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterShoot
-  projectilePrefab: {fileID: 775342606}
-  shootPoint: {fileID: 74660307}
-  shootForce: 10
-  shootCooldown: 1
-  lastShootTime: 0
 --- !u!1001 &759529828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3064,6 +3022,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a87aa868c591a9d468db9fefc3aeda9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1447769041}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a87aa868c591a9d468db9fefc3aeda9d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1447769043}
   m_SourcePrefab: {fileID: 100100000, guid: a87aa868c591a9d468db9fefc3aeda9d, type: 3}
 --- !u!1 &916947624
 GameObject:
@@ -4276,6 +4237,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WalkTest
   player: {fileID: 1534647754}
   idleDuration: 2
+  walkDistance: 6
+--- !u!114 &1447769043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447769035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede3f470c51780948b01901ca23a6048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooting
+  player: {fileID: 1534647754}
+  shotsPerStop: 3
+  timeBetweenShots: 0.8
 --- !u!1 &1455310835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -5683,10 +5660,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4787734284849576031, guid: dad9bf9d5da62f14196c25aa61c8fba0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 136407323}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dad9bf9d5da62f14196c25aa61c8fba0, type: 3}
 --- !u!1 &1853540762
 GameObject:
