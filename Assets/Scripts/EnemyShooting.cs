@@ -35,11 +35,12 @@ public class EnemyShooting : MonoBehaviour
 
         if (shootTimer >= timeBetweenShots)
         {
+            shootTimer=0f;
             if (shotsFired < shotsPerStop)
             {
-                shootTimer=0f;
-                shotsFired++;
                 animator.SetTrigger("Shoot");
+                shotsFired++;
+                //shootTimer=0f;
             }
             else
             {
@@ -51,8 +52,10 @@ public class EnemyShooting : MonoBehaviour
     public void StartShooting()
     {
         isShooting=true;
-        shotsFired=0;
-        shootTimer=timeBetweenShots;
+        shotsFired=1;
+        shootTimer=0f;
+
+        animator.SetTrigger("Shoot");
     }
 
     public bool IsShooting()
