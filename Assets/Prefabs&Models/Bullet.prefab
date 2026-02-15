@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: dbc2f602c8f9e234bac4e0bbdece7fab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,3 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6941acd9a295a145aee13a8f415a569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  glowColor: {r: 0, g: 1, b: 0, a: 1}
+  intensity: 8

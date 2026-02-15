@@ -5224,11 +5224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   bulletPrefab: {fileID: 760323220994572766, guid: 02b4145134d919046a2b89ff7aa504d2, type: 3}
-  shootPoint: {fileID: 610291751}
   player: {fileID: 1534647754}
+  shootPoint: {fileID: 610291751}
   bulletSpeed: 20
   targetHeight: 1.7
-  bulletsPerShot: 3
 --- !u!1 &1455310835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
