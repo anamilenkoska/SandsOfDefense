@@ -9,10 +9,12 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private EnemyShooting shooter;
+    public float firstShootDistance=2000f;        //must be within this distance to start shooting
     private float idleTimer=0f;
     private bool hasStartedWalking=false;
     private bool isWalking=false;
     private bool waitingForShootToFinish=false;
+    private bool firstShootDone=false;
 
     void Start()
     {
@@ -85,6 +87,19 @@ public class EnemyMovement : MonoBehaviour
 
     void StopAndShoot()
     {
+        if (!firstShootDone)
+        {
+            float distanceToTarget=Vector3.Distance(transform.position,player.position);
+
+            if (distanceToTarget > firstShootDistance)
+            {
+                //player is too far-continue walking
+                StartWalking();
+                return;
+            }
+            firstShootDone=true;        //allow shooting from now on
+        }
+
         isWalking=false;
         agent.isStopped=true;
         agent.velocity=Vector3.zero;
