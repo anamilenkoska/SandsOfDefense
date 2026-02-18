@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private EnemyShooting shooter;
-    public float firstShootDistance=2000f;        //must be within this distance to start shooting
+    public float firstShootDistance=30f;        //must be within this distance to start shooting
     private float idleTimer=0f;
     private bool hasStartedWalking=false;
     private bool isWalking=false;
@@ -108,7 +108,6 @@ public class EnemyMovement : MonoBehaviour
         waitingForShootToFinish=true;
         shooter.StartShooting();
     }
-
 }
 
 

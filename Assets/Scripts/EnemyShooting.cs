@@ -4,14 +4,14 @@ public class EnemyShooting : MonoBehaviour
 {
     public Transform player;
 
-    [Header("Shoot Settings")]
-    public int shotsPerStop=3;
-    public float timeBetweenShots=0.8f;
+    // [Header("Shoot Settings")]
+    // public int shotsPerStop=3;
+    // public float timeBetweenShots=0.8f;
 
     private Animator animator;
 
-    private int shotsFired=0;
-    private float shootTimer=0f;
+    // private int shotsFired=0;
+    // private float shootTimer=0f;
     private bool isShooting=false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,31 +31,36 @@ public class EnemyShooting : MonoBehaviour
         {
             transform.rotation=Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 5f);
         }
-        shootTimer+=Time.deltaTime;
+        // shootTimer+=Time.deltaTime;
 
-        if (shootTimer >= timeBetweenShots)
-        {
-            shootTimer=0f;
-            if (shotsFired < shotsPerStop)
-            {
-                animator.SetTrigger("Shoot");
-                shotsFired++;
-                //shootTimer=0f;
-            }
-            else
-            {
-                isShooting=false;
-            }
-        }
+        // if (shootTimer >= timeBetweenShots)
+        // {
+        //     shootTimer=0f;
+        //     if (shotsFired < shotsPerStop)
+        //     {
+        //         animator.SetTrigger("Shoot");
+        //         shotsFired++;
+        //         //shootTimer=0f;
+        //     }
+        //     else
+        //     {
+        //         isShooting=false;
+        //     }
+        // }
     }
 
     public void StartShooting()
     {
         isShooting=true;
-        shotsFired=1;
-        shootTimer=0f;
+        // shotsFired=1;
+        // shootTimer=0f;
 
         animator.SetTrigger("Shoot");
+    }
+
+    public void StopShooting()
+    {
+        isShooting=false;
     }
 
     public bool IsShooting()
