@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public Color glowColor;
     public float intensity=8f;
-    private Material _material;
+    private Material _material;   
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour
             if (health != null)     //check if the script for health exists on player
             {
                 health.TakeDamage();        //it exists-call the function that takes health from player
+                health.HitFadeAnimation();    //activate red fade after every hit
             }
             Destroy(gameObject);
         }

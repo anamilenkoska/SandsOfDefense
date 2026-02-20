@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ca7bffc4cfff4649ae13ed1357e9afc
+guid: 107cdfbdbde72ea4fb3370f66f87f791
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 333404
   packageName: Fantasy Monster 3D Model 03 - Game Ready - PixeliusVita
   packageVersion: 1.0
-  assetPath: Assets/Stylized3DMonster/Monster03/Anim/Monster03_Idle_v02.anim
+  assetPath: Assets/Stylized3DMonster/Monster03/Anim/InPlace_Anim/Monster03_Stunned.anim
   uploadId: 802982

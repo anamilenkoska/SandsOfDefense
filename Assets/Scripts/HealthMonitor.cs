@@ -1,4 +1,5 @@
 using UnityEngine;
+using StarterAssets;
 
 public class HealthMonitor : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class HealthMonitor : MonoBehaviour
     public float playerHealth;
     public float maxPlayerHealth=500;       //match it with the bar length, so when it hits 0 it loses
     private bool hasLost=false;
-    
+    public Animator deathScreen;
+    public Animator lose;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,6 +45,8 @@ public class HealthMonitor : MonoBehaviour
             {
                 hasLost=true;
                 Debug.Log("You lost");
+                DeathAnimation();
+                StopGame();              //stop everything after death
             }
         }
     }
@@ -54,4 +59,39 @@ public class HealthMonitor : MonoBehaviour
             damageAmount=0;         //reset counter for new hit
         }
     }
+
+    public void HitFadeAnimation()
+    {
+        deathScreen.SetTrigger("PlayerHit");
+    }
+
+    public void DeathAnimation()
+    {
+        lose.SetTrigger("PlayerDead");
+    }
+
+    private void StopGame()
+    {
+        //disable player controller
+        var playerContr=GetComponent<FirstPersonController>();
+        if (playerContr != null)
+        {
+            playerContr.enabled=false;
+        }
+
+        //destroy all bullets
+        var bullets=FindObjectsOfType<Bullet>();
+        foreach(var b in bullets) Destroy(b.gameObject);
+
+        //stop enemies from moving
+        var enemies=FindObjectsOfType<EnemyMovement>();
+        foreach (var e in enemies)
+        {
+            if(e!=this && e.enabled)
+            {
+                e.enabled=false;
+            }
+        }
+    }
 }
+
