@@ -6,11 +6,13 @@ public class EnemyMovement : MonoBehaviour
     public Transform player;
     public float idleDuration=2f;   //seconds to stay idle
     public float walkDistance=6f;
+    public float firstShootDistance=30f;        //must be within this distance to start shooting
+    private float idleTimer=0f;
     private NavMeshAgent agent;
     private Animator animator;
     private EnemyShooting shooter;
-    public float firstShootDistance=30f;        //must be within this distance to start shooting
-    private float idleTimer=0f;
+    private EnemyHealth health;
+
     private bool hasStartedWalking=false;
     private bool isWalking=false;
     private bool waitingForShootToFinish=false;
@@ -21,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
         agent=GetComponent<NavMeshAgent>();
         animator=GetComponent<Animator>();
         shooter=GetComponent<EnemyShooting>();
+        health=GetComponent<EnemyHealth>();
 
         agent.updateRotation=false;         //rotate manually
         agent.isStopped=true;       //start idle
@@ -30,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         if(player==null) return;
+        if(health!=null && (health.isDead || health.isHit)) return;      //stop movement if enemy is hit or dead
 
         if (!hasStartedWalking)     //check if the monster has started walking
         {

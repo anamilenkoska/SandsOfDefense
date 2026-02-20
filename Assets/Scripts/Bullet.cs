@@ -17,6 +17,14 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player hit");
+
+            //get health monitor from player
+            HealthMonitor health=other.GetComponent<HealthMonitor>();
+
+            if (health != null)     //check if the script for health exists on player
+            {
+                health.TakeDamage();        //it exists-call the function that takes health from player
+            }
             Destroy(gameObject);
         }
     }

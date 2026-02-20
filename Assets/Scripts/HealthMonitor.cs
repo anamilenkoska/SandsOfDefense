@@ -13,7 +13,7 @@ public class HealthMonitor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(HealthChange());
+        //StartCoroutine(HealthChange());
     }
 
     // Update is called once per frame
@@ -39,13 +39,8 @@ public class HealthMonitor : MonoBehaviour
         }
     }
 
-    IEnumerator HealthChange()
+    public void TakeDamage()
     {
-        yield return new WaitForSeconds(3);
-        decreasingHealth=true;
-        yield return new WaitForSeconds(3);
-        decreasingHealth=true;
-        yield return new WaitForSeconds(3);
         decreasingHealth=true;
     }
 }
