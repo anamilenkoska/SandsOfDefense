@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth=5;
     private int currentHealth;
+    public static int enemiesAlive=0;
 
     [HideInInspector] public bool isDead=false;     //died and should stop everything
     [HideInInspector] public bool isHit=false;      //for hit animation
@@ -14,6 +15,13 @@ public class EnemyHealth : MonoBehaviour
     private Collider enemyCollider;
     private NavMeshAgent agent;
     private EnemyShooting shooter;
+
+    private static bool gameWon=false;
+
+    void Awake()
+    {
+        enemiesAlive++;     //count each enemy when scene loads
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,7 +79,15 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         isDead=true;
+
+        enemiesAlive--;     //decrease enemy count
+
         animator.SetTrigger("Die");
+
+        if (enemiesAlive <= 0 && !gameWon)
+        {
+            gameWon=true;
+        }
 
         if (agent != null)
         {

@@ -3,6 +3,7 @@ using StarterAssets;
 
 public class HealthMonitor : MonoBehaviour
 {
+    [Header("Player Health")]
     public float healthLength=500;
     public float healthPos=320;     //x pos of the bar
     public GameObject healthBar;
@@ -12,14 +13,22 @@ public class HealthMonitor : MonoBehaviour
     public float playerHealth;
     public float maxPlayerHealth=500;       //match it with the bar length, so when it hits 0 it loses
     private bool hasLost=false;
+    private bool hasWon=false;
+
+    [Header("EndGame")]
     public Animator deathScreen;
     public Animator lose;
+    public Animator win;
+
+    [Header("Player Gun")]
+    public LasgunFire playerGun;
+    public Animator gunAnimator;
+    public GameObject crossSides;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerHealth=maxPlayerHealth;
-        //StartCoroutine(HealthChange());
     }
 
     // Update is called once per frame
@@ -49,6 +58,14 @@ public class HealthMonitor : MonoBehaviour
                 StopGame();              //stop everything after death
             }
         }
+
+        if(!hasWon && EnemyHealth.enemiesAlive <= 0)
+        {
+            hasWon=true;
+            Debug.Log("You won");
+            WinAnimation();
+            StopGame();     //stop everything from moving after end of game
+        }
     }
 
     public void TakeDamage()
@@ -70,21 +87,32 @@ public class HealthMonitor : MonoBehaviour
         lose.SetTrigger("PlayerDead");
     }
 
+    public void WinAnimation()
+    {
+        win.SetTrigger("PlayerWin");
+    }
+
     private void StopGame()
     {
         //disable player controller
         var playerContr=GetComponent<FirstPersonController>();
-        if (playerContr != null)
-        {
-            playerContr.enabled=false;
-        }
+        playerContr.enabled=false;
+
+        //disable crosshair
+        crossSides.SetActive(false);
+
+        //disable shooting
+        playerGun.enabled=false;
+        playerGun.StopAllCoroutines();      //stop shooting coroutine
+        
+        gunAnimator.enabled=false;
 
         //destroy all bullets
-        var bullets=FindObjectsOfType<Bullet>();
+        var bullets=FindObjectsByType<Bullet>(FindObjectsSortMode.None);        //FindObjectsOfType is deprecated and causes warnings in unity
         foreach(var b in bullets) Destroy(b.gameObject);
 
         //stop enemies from moving
-        var enemies=FindObjectsOfType<EnemyMovement>();
+        var enemies=FindObjectsByType<EnemyMovement>(FindObjectsSortMode.None);
         foreach (var e in enemies)
         {
             if(e!=this && e.enabled)
