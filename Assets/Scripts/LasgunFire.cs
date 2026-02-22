@@ -8,7 +8,6 @@ public class LasgunFire : MonoBehaviour
     [SerializeField] bool canFire=true;              //to check if the gun can fire
     [SerializeField] GameObject sidesCross;         //to make the sides of the cross appear when shooting with the gun
 
-
     //for raycast
     [SerializeField] Camera playerCamera;
     [SerializeField] float range=100f;      //how far the gun can shoot

@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] AudioSource enemyHit;
     public int maxHealth=5;
     private int currentHealth;
     public static int enemiesAlive=0;
@@ -55,10 +56,12 @@ public class EnemyHealth : MonoBehaviour
             }
 
             animator.SetTrigger("Hit");
+            enemyHit.Play();
             StartCoroutine(ResumeAfterHit(0.5f));       //enemy is still for 0.5s
         }
         else
         {
+            enemyHit.Play();        //the last hit to have sound
             Die();
         }
     }

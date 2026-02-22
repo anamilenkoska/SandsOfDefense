@@ -153,5 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6941acd9a295a145aee13a8f415a569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  glowColor: {r: 0, g: 1, b: 0, a: 1}
+  glowColor: {r: 0.3824227, g: 1, b: 0, a: 1}
   intensity: 8

@@ -12,6 +12,7 @@ public class HealthMonitor : MonoBehaviour
     public float hitValue=50;      //amount of damage it is going to be
     public float playerHealth;
     public float maxPlayerHealth=500;       //match it with the bar length, so when it hits 0 it loses
+    [SerializeField] AudioSource playerHit;
     private bool hasLost=false;
     private bool hasWon=false;
 
@@ -19,6 +20,8 @@ public class HealthMonitor : MonoBehaviour
     public Animator deathScreen;
     public Animator lose;
     public Animator win;
+    [SerializeField] AudioSource winSound;
+    [SerializeField] AudioSource loseSound;
 
     [Header("Player Gun")]
     public LasgunFire playerGun;
@@ -54,7 +57,7 @@ public class HealthMonitor : MonoBehaviour
             {
                 hasLost=true;
                 Debug.Log("You lost");
-                DeathAnimation();
+                LoseAnimation();
                 StopGame();              //stop everything after death
             }
         }
@@ -80,15 +83,18 @@ public class HealthMonitor : MonoBehaviour
     public void HitFadeAnimation()
     {
         deathScreen.SetTrigger("PlayerHit");
+        playerHit.Play();
     }
 
-    public void DeathAnimation()
+    public void LoseAnimation()
     {
+        loseSound.Play();
         lose.SetTrigger("PlayerDead");
     }
 
     public void WinAnimation()
     {
+        winSound.Play();
         win.SetTrigger("PlayerWin");
     }
 
