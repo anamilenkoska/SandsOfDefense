@@ -1,5 +1,6 @@
 using UnityEngine;
 using StarterAssets;
+using TMPro;
 
 public class HealthMonitor : MonoBehaviour
 {
@@ -27,18 +28,28 @@ public class HealthMonitor : MonoBehaviour
     public LasgunFire playerGun;
     public Animator gunAnimator;
     public GameObject crossSides;
+    
+    [Header("Enemy Counter")]
+    public TMP_Text enemyCounter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerHealth=maxPlayerHealth;
+
+        if (enemyCounter != null)
+        {
+            EnemyHealth.enemyCounter=enemyCounter;
+        }
+
+        EnemyHealth.UpdateCounterUI();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Set position inside canvas correctly using anchoredPosition
-        healthBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(healthPos, -70); 
+        healthBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(healthPos, 85); 
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(healthLength, 70);      
 
         if (decreasingHealth == true)       //if enemy is hitting the player
@@ -128,4 +139,5 @@ public class HealthMonitor : MonoBehaviour
         }
     }
 }
+
 

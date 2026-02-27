@@ -35,5 +35,13 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
+
+        PortalHealth portal=other.GetComponentInParent<PortalHealth>();
+        if (portal != null)
+        {
+            Debug.Log("Portal hit");
+            portal.decreadingHealth=true;
+            Destroy(gameObject);
+        }
     }
 }

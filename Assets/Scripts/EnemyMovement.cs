@@ -3,7 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform player;
+    //public Transform player;
+    public Transform enemyTarget;
     public float idleDuration=2f;   //seconds to stay idle
     public float walkDistance=6f;
     public float firstShootDistance=30f;        //must be within this distance to start shooting
@@ -32,7 +33,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if(player==null) return;
+        //if(player==null) return;
+        if(enemyTarget==null) return;
         if(health!=null && (health.isDead || health.isHit)) return;      //stop movement if enemy is hit or dead
 
         if (!hasStartedWalking)     //check if the monster has started walking
@@ -74,7 +76,8 @@ public class EnemyMovement : MonoBehaviour
 
     void StartWalking()
     {
-        Vector3 direction=(player.position-transform.position).normalized;
+        //Vector3 direction=(player.position-transform.position).normalized;
+        Vector3 direction=(enemyTarget.position-transform.position).normalized;
         Vector3 target=transform.position+direction*walkDistance;
 
         NavMeshHit hit;
@@ -93,7 +96,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!firstShootDone)
         {
-            float distanceToTarget=Vector3.Distance(transform.position,player.position);
+            //float distanceToTarget=Vector3.Distance(transform.position,player.position);
+            float distanceToTarget=Vector3.Distance(transform.position,enemyTarget.position);
 
             if (distanceToTarget > firstShootDistance)
             {

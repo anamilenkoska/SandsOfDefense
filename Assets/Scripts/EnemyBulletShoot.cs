@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyBulletShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Transform player;
+    public Transform enemyTarget;
     public Transform shootPoint;
     public float bulletSpeed=20f;
     public float targetHeight=1.7f;
@@ -17,10 +17,11 @@ public class EnemyBulletShoot : MonoBehaviour
 
         if (rb != null)
         {
-            Vector3 target=new Vector3(player.position.x,player.position.y+targetHeight,player.position.z);     //position where it shoot the player
+            //adjust target height
+            Vector3 aimPosition=new Vector3(enemyTarget.position.x,enemyTarget.position.y+targetHeight,enemyTarget.position.z);     //position where it shoot the player
 
             //compute straight direction
-            Vector3 direction=(target-shootPoint.position).normalized;
+            Vector3 direction=(aimPosition-shootPoint.position).normalized;
 
             //set velocity in a straight line, and set speed
             rb.linearVelocity=direction*bulletSpeed;

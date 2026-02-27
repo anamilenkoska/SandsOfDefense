@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,9 +20,13 @@ public class EnemyHealth : MonoBehaviour
 
     private static bool gameWon=false;
 
+    public static int totalEnemies=0;
+    public static TMP_Text enemyCounter;
+
     void Awake()
     {
         enemiesAlive++;     //count each enemy when scene loads
+        totalEnemies++;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +37,8 @@ public class EnemyHealth : MonoBehaviour
         enemyCollider=GetComponent<Collider>();
         agent=GetComponent<NavMeshAgent>();
         shooter=GetComponent<EnemyShooting>();
+
+        UpdateCounterUI();      //update when enemy dies
     }
 
     public void Damage(int damage)
@@ -85,6 +92,8 @@ public class EnemyHealth : MonoBehaviour
 
         enemiesAlive--;     //decrease enemy count
 
+        UpdateCounterUI();
+
         animator.SetTrigger("Die");
 
         if (enemiesAlive <= 0 && !gameWon)
@@ -116,6 +125,13 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(1f);      //wait 1s 
         Destroy(gameObject);                      //then destroy enemy
     }
-}
 
+    public static void UpdateCounterUI()
+    {
+        if (enemyCounter != null)
+        {
+            enemyCounter.text=$"{enemiesAlive}/{totalEnemies}";
+        }
+    }
+}
 

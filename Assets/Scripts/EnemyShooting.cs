@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    public Transform player;
+    public Transform enemyTarget;
     private Animator animator;
     private bool isShooting=false;
 
@@ -17,7 +17,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if(!isShooting) return;
 
-        Vector3 lookDir=player.position-transform.position;     //calculate direction from enemy to player
+        Vector3 lookDir=enemyTarget.position-transform.position;     //calculate direction from enemy to player
         lookDir.y=0;
         if (lookDir.sqrMagnitude > 0.01f)
         {
