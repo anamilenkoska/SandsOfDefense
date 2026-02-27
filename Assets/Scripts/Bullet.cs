@@ -14,6 +14,13 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Terrain"))
+        {
+            Debug.Log("Terrain hit");
+            Destroy(gameObject);
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player hit");
