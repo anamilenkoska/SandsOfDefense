@@ -11,6 +11,8 @@ public class PortalHealth : MonoBehaviour
     public float hitValue=20;
     public float portalHealth;
     public float maxPortalHealth=350;
+
+    public HealthMonitor healthMonitor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +36,12 @@ public class PortalHealth : MonoBehaviour
                 Debug.Log("Portal is hit");
                 decreadingHealth=false;
                 damageAmount=0;
+            }
+            if (portalHealth <= 0)
+            {
+                Debug.Log("You lost");
+                healthMonitor.LoseAnimation();
+                healthMonitor.StopGame();
             }
         }
     }

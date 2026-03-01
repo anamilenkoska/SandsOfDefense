@@ -18,7 +18,7 @@ public class HealthMonitor : MonoBehaviour
     private bool hasWon=false;
 
     [Header("EndGame")]
-    public Animator deathScreen;
+    public Animator hitScreen;
     public Animator lose;
     public Animator win;
     [SerializeField] AudioSource winSound;
@@ -93,7 +93,7 @@ public class HealthMonitor : MonoBehaviour
 
     public void HitFadeAnimation()
     {
-        deathScreen.SetTrigger("PlayerHit");
+        hitScreen.SetTrigger("PlayerHit");
         playerHit.Play();
     }
 
@@ -109,7 +109,7 @@ public class HealthMonitor : MonoBehaviour
         win.SetTrigger("PlayerWin");
     }
 
-    private void StopGame()
+    public void StopGame()
     {
         //disable player controller
         var playerContr=GetComponent<FirstPersonController>();
@@ -117,6 +117,11 @@ public class HealthMonitor : MonoBehaviour
 
         //disable crosshair
         crossSides.SetActive(false);
+
+        //stop the background music
+        GameObject backgroundMusic=GameObject.Find("BackgroundMusic");
+        AudioSource music=backgroundMusic.GetComponent<AudioSource>();
+        music.Stop();
 
         //disable shooting
         playerGun.enabled=false;
