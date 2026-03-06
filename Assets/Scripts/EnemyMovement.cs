@@ -3,7 +3,6 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    //public Transform player;
     public Transform enemyTarget;
     public float idleDuration=2f;   //seconds to stay idle
     public float walkDistance=6f;
@@ -28,12 +27,10 @@ public class EnemyMovement : MonoBehaviour
 
         agent.updateRotation=false;         //rotate manually
         agent.isStopped=true;       //start idle
-        //animator.SetBool("isWalking",false);
     }
 
     void Update()
     {
-        //if(player==null) return;
         if(enemyTarget==null) return;
         if(health!=null && (health.isDead || health.isHit)) return;      //stop movement if enemy is hit or dead
 
@@ -44,7 +41,6 @@ public class EnemyMovement : MonoBehaviour
             if(idleTimer>=idleDuration)     //check if the monster has been in idle long enough
             {
                 hasStartedWalking=true;
-                //agent.isStopped=false;      //start walking
                 StartWalking();
             }
             return;      //skip walking logic->still in idle
@@ -76,7 +72,6 @@ public class EnemyMovement : MonoBehaviour
 
     void StartWalking()
     {
-        //Vector3 direction=(player.position-transform.position).normalized;
         Vector3 direction=(enemyTarget.position-transform.position).normalized;
         Vector3 target=transform.position+direction*walkDistance;
 
@@ -96,7 +91,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!firstShootDone)
         {
-            //float distanceToTarget=Vector3.Distance(transform.position,player.position);
             float distanceToTarget=Vector3.Distance(transform.position,enemyTarget.position);
 
             if (distanceToTarget > firstShootDistance)

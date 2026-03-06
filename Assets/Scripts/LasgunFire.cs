@@ -13,7 +13,6 @@ public class LasgunFire : MonoBehaviour
     [SerializeField] float range=100f;      //how far the gun can shoot
     [SerializeField] int damage=1;          //damage per shot
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButton(0) && canFire==true)        //0 is for the left mouse button
@@ -44,8 +43,6 @@ public class LasgunFire : MonoBehaviour
 
         if(Physics.Raycast(playerCamera.transform.position,playerCamera.transform.forward,out hit, range))
         {
-            Debug.Log("Hit: "+hit.transform.name);
-
             EnemyHealth enemy=hit.transform.GetComponent<EnemyHealth>();
             if (enemy != null)
             {

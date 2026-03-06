@@ -16,15 +16,12 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Terrain"))
         {
-            Debug.Log("Terrain hit");
             Destroy(gameObject);
             return;
         }
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player hit");
-
             //get health monitor from player
             HealthMonitor health=other.GetComponent<HealthMonitor>();
 
@@ -39,7 +36,6 @@ public class Bullet : MonoBehaviour
         PortalHealth portal=other.GetComponentInParent<PortalHealth>();
         if (portal != null)
         {
-            Debug.Log("Portal hit");
             portal.decreadingHealth=true;
             Destroy(gameObject);
         }

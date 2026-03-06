@@ -28,7 +28,6 @@ public class SoundEffects : MonoBehaviour
     private float _stepTimer;       //controls footstep timing
     private bool _wasGrounded;      //stores last frame's grounded state, allows to the detect transition from ground-air
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _audioSource=GetComponent<AudioSource>();
@@ -42,7 +41,6 @@ public class SoundEffects : MonoBehaviour
         _wasGrounded=_player.Grounded;
     }
 
-    // Update is called once per frame
     void Update()
     {
         HandleFootSteps();

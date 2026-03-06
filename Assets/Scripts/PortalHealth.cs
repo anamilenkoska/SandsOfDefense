@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PortalHealth : MonoBehaviour
 {
@@ -13,13 +14,15 @@ public class PortalHealth : MonoBehaviour
     public float maxPortalHealth=350;
 
     public HealthMonitor healthMonitor;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private RawImage portalBar;
+
     void Start()
     {
         portalHealth=maxPortalHealth;
+        portalBar=healthBarPortal.GetComponent<RawImage>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         healthBarPortal.GetComponent<RectTransform>().anchoredPosition=new Vector2(healthPos,-55);
@@ -27,19 +30,19 @@ public class PortalHealth : MonoBehaviour
 
         if (decreadingHealth == true)
         {
+            portalBar.color=Color.darkRed;
+
             damageAmount+=2f;
             healthLength-=2f;
             healthPos-=1f;
             portalHealth-=2f;
             if (damageAmount >= hitValue)
             {
-                Debug.Log("Portal is hit");
                 decreadingHealth=false;
                 damageAmount=0;
             }
             if (portalHealth <= 0)
             {
-                Debug.Log("You lost");
                 healthMonitor.LoseAnimation();
                 healthMonitor.StopGame();
             }

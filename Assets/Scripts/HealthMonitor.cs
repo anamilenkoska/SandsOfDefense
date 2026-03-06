@@ -32,7 +32,6 @@ public class HealthMonitor : MonoBehaviour
     [Header("Enemy Counter")]
     public TMP_Text enemyCounter;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerHealth=maxPlayerHealth;
@@ -45,7 +44,6 @@ public class HealthMonitor : MonoBehaviour
         EnemyHealth.UpdateCounterUI();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Set position inside canvas correctly using anchoredPosition
@@ -56,7 +54,6 @@ public class HealthMonitor : MonoBehaviour
         {
             damageAmount+=2f;               //higher the value, quicker the health will decrease
             healthLength-=2f;               //take same value of the length of the bar
-            //maxPlayerHealth-=2f;
             healthPos-=1f;
             playerHealth-=2f;
             if (damageAmount >= hitValue)   //when hit the damageAmount will start increasing until it reaches hitValue
@@ -67,7 +64,6 @@ public class HealthMonitor : MonoBehaviour
             if(playerHealth<=0 && !hasLost)
             {
                 hasLost=true;
-                Debug.Log("You lost");
                 LoseAnimation();
                 StopGame();              //stop everything after death
             }
@@ -76,7 +72,6 @@ public class HealthMonitor : MonoBehaviour
         if(!hasWon && EnemyHealth.enemiesAlive <= 0)
         {
             hasWon=true;
-            Debug.Log("You won");
             WinAnimation();
             StopGame();     //stop everything from moving after end of game
         }
