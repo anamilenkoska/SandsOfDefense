@@ -17,17 +17,11 @@ public class EnemyBulletShoot : MonoBehaviour
 
         if (rb != null)
         {
-            //adjust target height
-            Vector3 aimPosition=new Vector3(enemyTarget.position.x,enemyTarget.position.y+targetHeight,enemyTarget.position.z);     //position where it shoot the player
-
-            //compute straight direction
+            Vector3 aimPosition=new Vector3(enemyTarget.position.x,enemyTarget.position.y+targetHeight,enemyTarget.position.z);     
             Vector3 direction=(aimPosition-shootPoint.position).normalized;
 
-            //set velocity in a straight line, and set speed
             rb.linearVelocity=direction*bulletSpeed;
-
-            //rotate bullet to face target
-            bullet.transform.forward=direction;     //to not fly sideways
+            bullet.transform.forward=direction;     
         }
 
         //destroy 

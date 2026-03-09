@@ -15,7 +15,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if(!isShooting) return;
 
-        Vector3 lookDir=enemyTarget.position-transform.position;     //calculate direction from enemy to player
+        Vector3 lookDir=enemyTarget.position-transform.position;     
         lookDir.y=0;
         if (lookDir.sqrMagnitude > 0.01f)
         {

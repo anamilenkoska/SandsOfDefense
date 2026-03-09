@@ -4,9 +4,9 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform enemyTarget;
-    public float idleDuration=2f;   //seconds to stay idle
+    public float idleDuration=2f;   
     public float walkDistance=6f;
-    public float firstShootDistance=30f;        //must be within this distance to start shooting
+    public float firstShootDistance=30f;        
     private float idleTimer=0f;
     private NavMeshAgent agent;
     private Animator animator;
@@ -32,18 +32,18 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         if(enemyTarget==null) return;
-        if(health!=null && (health.isDead || health.isHit)) return;      //stop movement if enemy is hit or dead
+        if(health!=null && (health.isDead || health.isHit)) return;      
 
-        if (!hasStartedWalking)     //check if the monster has started walking
+        if (!hasStartedWalking)     
         {
-            idleTimer+=Time.deltaTime;      //if not then count the time in idle
+            idleTimer+=Time.deltaTime;      
 
-            if(idleTimer>=idleDuration)     //check if the monster has been in idle long enough
+            if(idleTimer>=idleDuration)     
             {
                 hasStartedWalking=true;
                 StartWalking();
             }
-            return;      //skip walking logic->still in idle
+            return;      
         }
 
         if (waitingForShootToFinish)
@@ -95,11 +95,10 @@ public class EnemyMovement : MonoBehaviour
 
             if (distanceToTarget > firstShootDistance)
             {
-                //player is too far-continue walking
                 StartWalking();
                 return;
             }
-            firstShootDone=true;        //allow shooting from now on
+            firstShootDone=true;        
         }
 
         isWalking=false;

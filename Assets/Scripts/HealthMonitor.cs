@@ -8,11 +8,11 @@ public class HealthMonitor : MonoBehaviour
     public float healthLength=500;
     public float healthPos=320;     //x pos of the bar
     public GameObject healthBar;
-    public float damageAmount=0;      //count how much we have going on
+    public float damageAmount=0;      
     public bool decreasingHealth=false;
-    public float hitValue=50;      //amount of damage it is going to be
+    public float hitValue=50;      
     public float playerHealth;
-    public float maxPlayerHealth=500;       //match it with the bar length, so when it hits 0 it loses
+    public float maxPlayerHealth=500;       
     [SerializeField] AudioSource playerHit;
     private bool hasLost=false;
     private bool hasWon=false;
@@ -46,26 +46,26 @@ public class HealthMonitor : MonoBehaviour
 
     void Update()
     {
-        // Set position inside canvas correctly using anchoredPosition
+        
         healthBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(healthPos, 85); 
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(healthLength, 70);      
 
-        if (decreasingHealth == true)       //if enemy is hitting the player
+        if (decreasingHealth == true)       
         {
-            damageAmount+=2f;               //higher the value, quicker the health will decrease
-            healthLength-=2f;               //take same value of the length of the bar
+            damageAmount+=2f;               
+            healthLength-=2f;               
             healthPos-=1f;
             playerHealth-=2f;
-            if (damageAmount >= hitValue)   //when hit the damageAmount will start increasing until it reaches hitValue
+            if (damageAmount >= hitValue)   
             {
                 decreasingHealth=false;     
-                damageAmount=0;             //reset
+                damageAmount=0;             
             }
             if(playerHealth<=0 && !hasLost)
             {
                 hasLost=true;
                 LoseAnimation();
-                StopGame();              //stop everything after death
+                StopGame();              
             }
         }
 
@@ -73,7 +73,7 @@ public class HealthMonitor : MonoBehaviour
         {
             hasWon=true;
             WinAnimation();
-            StopGame();     //stop everything from moving after end of game
+            StopGame();     
         }
     }
 
@@ -82,7 +82,7 @@ public class HealthMonitor : MonoBehaviour
         if (!hasLost)
         {
             decreasingHealth=true;
-            damageAmount=0;         //reset counter for new hit
+            damageAmount=0;         
         }
     }
 
@@ -106,29 +106,23 @@ public class HealthMonitor : MonoBehaviour
 
     public void StopGame()
     {
-        //disable player controller
         var playerContr=GetComponent<FirstPersonController>();
         playerContr.enabled=false;
 
-        //disable crosshair
         crossSides.SetActive(false);
 
-        //stop the background music
         GameObject backgroundMusic=GameObject.Find("BackgroundMusic");
         AudioSource music=backgroundMusic.GetComponent<AudioSource>();
         music.Stop();
 
-        //disable shooting
         playerGun.enabled=false;
-        playerGun.StopAllCoroutines();      //stop shooting coroutine
+        playerGun.StopAllCoroutines();      
         
         gunAnimator.enabled=false;
 
-        //destroy all bullets
         var bullets=FindObjectsByType<Bullet>(FindObjectsSortMode.None);        //FindObjectsOfType is deprecated and causes warnings in unity
         foreach(var b in bullets) Destroy(b.gameObject);
 
-        //stop enemies from moving
         var enemies=FindObjectsByType<EnemyMovement>(FindObjectsSortMode.None);
         foreach (var e in enemies)
         {

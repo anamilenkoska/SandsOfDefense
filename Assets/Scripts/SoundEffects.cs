@@ -12,7 +12,7 @@ public class SoundEffects : MonoBehaviour
     public AudioClip landSound;
 
     [Header("Footstep settings")]
-    public float walkInterval=0.5f;     //how often footsteps play
+    public float walkInterval=0.5f;     
     public float crouchInterval=0.8f;
 
     [Header("Volume Settings")]
@@ -20,13 +20,12 @@ public class SoundEffects : MonoBehaviour
     [Range(0f,1f)] public float jump;
     [Range(0f,1f)] public float land;
 
-
     private AudioSource _audioSource;
     private CharacterController _controller;
     private FirstPersonController _player;
 
-    private float _stepTimer;       //controls footstep timing
-    private bool _wasGrounded;      //stores last frame's grounded state, allows to the detect transition from ground-air
+    private float _stepTimer;       
+    private bool _wasGrounded;      
 
     void Start()
     {
@@ -49,20 +48,12 @@ public class SoundEffects : MonoBehaviour
 
     private void HandleFootSteps()
     {
-        //if the player in air-no footstep
-        if (!_player.Grounded)
-        {
-            return;
-        }
+        if (!_player.Grounded) return;
 
-        //must be moving
-        if (_controller.velocity.magnitude < 0.1f)
-        {
-            return;
-        }
+        if (_controller.velocity.magnitude < 0.1f) return;
 
         float interval;
-        //chooses how fast footsteps play based on movement state
+        
         if (_player.IsCrouching)
         {
             interval=crouchInterval;
@@ -75,27 +66,25 @@ public class SoundEffects : MonoBehaviour
         _stepTimer-=Time.deltaTime;
         if (_stepTimer <= 0f)
         {
-            _audioSource.PlayOneShot(sandFootstep);     //plays sound
-            _stepTimer=interval;        //resets timer
+            _audioSource.PlayOneShot(sandFootstep);     
+            _stepTimer=interval;        
         }
     }
 
     private void HandleJump()
     {
-        //if last frame on ground-this in air
         if(_wasGrounded && !_player.Grounded)
         {
             _audioSource.PlayOneShot(jumpSound,jump);
-            _stepTimer=0f;      //prevents footstep overlap after jump or land
+            _stepTimer=0f;      
         }
 
-        //landing
         if(!_wasGrounded && _player.Grounded)
         {
             _audioSource.PlayOneShot(landSound,land);
             _stepTimer=0f;
         }
 
-        _wasGrounded=_player.Grounded;      //stores current state for next frame
+        _wasGrounded=_player.Grounded;      
     }
 }

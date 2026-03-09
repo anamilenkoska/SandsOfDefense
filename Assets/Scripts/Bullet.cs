@@ -22,13 +22,12 @@ public class Bullet : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            //get health monitor from player
             HealthMonitor health=other.GetComponent<HealthMonitor>();
 
-            if (health != null)     //check if the script for health exists on player
+            if (health != null)     
             {
-                health.TakeDamage();        //it exists-call the function that takes health from player
-                health.HitFadeAnimation();    //activate red fade after every hit
+                health.TakeDamage();        
+                health.HitFadeAnimation();    
             }
             Destroy(gameObject);
         }
